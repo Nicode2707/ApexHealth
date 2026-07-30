@@ -1,5 +1,6 @@
 package com.nicode.ApexHealth.Entity;
 
+import com.nicode.ApexHealth.Entity.Type.bloodgroup;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,7 +44,10 @@ public class patient {
     private String gender;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
+
+    @Enumerated(EnumType.STRING)
+    private bloodgroup bloodGroup;
 
 }
