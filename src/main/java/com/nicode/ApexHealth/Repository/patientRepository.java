@@ -1,5 +1,6 @@
 package com.nicode.ApexHealth.Repository;
 
+import com.nicode.ApexHealth.Dto.BloodGroupCountResponseEntity;
 import com.nicode.ApexHealth.Entity.Type.bloodgroup;
 import com.nicode.ApexHealth.Entity.patient;
 import jakarta.transaction.Transactional;
@@ -9,7 +10,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.awt.print.Pageable;
+//import java.awt.print.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,20 +24,19 @@ public interface patientRepository extends JpaRepository<patient,Long> {
 
     List<patient> findByNameContainingOrderByIdDesc(String query);
 
-    @Query("SELECT p FROM Patient p where p.bloodGroup = ?1")
+    @Query("SELECT p FROM patient p where p.bloodGroup = ?1")
     List<patient> findByBloodGroup(@Param("bloodGroup") bloodgroup bloodGroup);
 
-    @Query("select p from Patient p where p.birthDate > :birthDate")
+    @Query("select p from patient p where p.birthDate > :birthDate")
     List<patient> findByBornAfterDate(@Param("birthDate") LocalDate birthDate);
 
-    @Query("select new com.codingshuttle.youtube.hospitalManagement.dto.BloodGroupCountResponseEntity(p.bloodGroup," +
-            " Count(p)) from Patient p group by p.bloodGroup")
-
+    @Query("select new com.nicode.ApexHealth.Dto.BloodGroupCountResponseEntity(p.bloodgroup," +
+            " count(p)) from patient p group by p.bloodgroup")
 //    List<Object[]> countEachBloodGroupType();
     List<BloodGroupCountResponseEntity> countEachBloodGroupType();
 
-    @Query(value = "select * from patient", nativeQuery = true)
-    Page<patient> findAllPatients(Pageable pageable);
+  //  @Query(value = "select * from patient", nativeQuery = true)
+  //  Page<patient> findAllPatients(Pageable pageable);
 
     @Transactional
     @Modifying
