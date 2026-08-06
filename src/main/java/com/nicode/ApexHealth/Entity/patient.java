@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @ToString
@@ -24,7 +25,6 @@ import java.time.LocalDateTime;
                 @Index(name = "idx_patient_birth_date", columnList = "birthDate")
         }
 )
-
 
 public class patient {
 
@@ -53,4 +53,7 @@ public class patient {
     @OneToOne//owning side
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient")
+    List<Appointment> appointments;
 }
