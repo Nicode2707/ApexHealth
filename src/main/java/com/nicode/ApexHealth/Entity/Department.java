@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -22,5 +25,8 @@ public class Department {
     @OneToOne
     private Doctor headdoctor;
 
+    @ManyToMany
+
+    private Set<Doctor> doctors = new HashSet<>();
 
 }
