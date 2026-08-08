@@ -50,7 +50,8 @@ public class patient {
     @Enumerated(EnumType.STRING)
     private bloodgroup blood_group;
 
-    @OneToOne//owning side
+
+    @OneToOne(cascade = CascadeType.ALL)//owning side
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 

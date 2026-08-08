@@ -26,7 +26,6 @@ public class Department {
     private Doctor headdoctor;
 
     @ManyToMany
-
     private Set<Doctor> doctors = new HashSet<>();
 
 }
