@@ -3,7 +3,9 @@ package com.nicode.ApexHealth;
 import com.nicode.ApexHealth.Entity.Insurance;
 import com.nicode.ApexHealth.Entity.patient;
 import com.nicode.ApexHealth.Service.InsuranceService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 @SpringBootTest
 public class InsuranceTest {
 
+    @Autowired
     private InsuranceService insuranceservice;
 
     @Test

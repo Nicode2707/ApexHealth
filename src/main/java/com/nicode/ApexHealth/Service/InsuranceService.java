@@ -20,10 +20,10 @@ public class InsuranceService {
                 .orElseThrow(() -> new RuntimeException("patient not found"));
 
         patient.setInsurance(insurance);
-        patientRepository.save(patient);
+
 
         insurance.setPatient(patient);//Bidirectional consistency maintained
-        insuranceRepository.save(insurance);
+
 
         return patient;
     }

@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -56,5 +57,6 @@ public class patient {
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")
-    List<Appointment> appointments;
+     @ToString.Exclude
+    List<Appointment> appointments = new ArrayList<>();
 }
