@@ -56,7 +56,7 @@ public class patient {
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.REMOVE,orphanRemoval = true)
      @ToString.Exclude
     List<Appointment> appointments = new ArrayList<>();
 }
