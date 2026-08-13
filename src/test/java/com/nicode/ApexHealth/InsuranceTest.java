@@ -27,5 +27,8 @@ public class InsuranceTest {
 
         patient patient =  insuranceservice.assignPatientToInsurance(insurance,1L);
         System.out.println(patient);
+
+        var newpatient = insuranceservice.diassociatePatientToInsurance(patient.getId());
+        System.out.println(newpatient);
     }
 }

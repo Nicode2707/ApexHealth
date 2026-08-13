@@ -18,13 +18,19 @@ public class InsuranceService {
     public patient assignPatientToInsurance(Insurance insurance ,Long patientId){
         patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new RuntimeException("patient not found"));
-
         patient.setInsurance(insurance);
-
-
         insurance.setPatient(patient);//Bidirectional consistency maintained
-
-
         return patient;
     }
+
+    @Transactional
+    public patient diassociatePatientToInsurance(Long patientId){
+
+        patient patient =  patientRepository.findById(patientId)
+                .orElseThrow(() -> new RuntimeException("patient not found" + patientId));
+        patient.setInsurance(null);
+        return patient;
+    }
+
+
 }

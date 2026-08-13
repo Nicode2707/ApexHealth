@@ -52,11 +52,12 @@ public class patient {
     private bloodgroup blood_group;
 
 
-    @OneToOne(cascade = CascadeType.ALL)//owning side
+    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)//owning side
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 
-    @OneToMany(mappedBy = "patient",cascade = CascadeType.REMOVE,orphanRemoval = true)
-     @ToString.Exclude
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch =  FetchType.LAZY)
+    @ToString.Exclude
     List<Appointment> appointments = new ArrayList<>();
+
 }
