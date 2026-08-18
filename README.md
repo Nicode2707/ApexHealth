@@ -1,4 +1,4 @@
-# ApexHealth 
+# ApexHealth ..
 
 ApexHealth is a Spring Boot (Java) backend for a basic hospital / clinic management system. It models patients, doctors, departments, appointments, and insurance policies, and persists them to a PostgreSQL database using Spring Data JPA / Hibernate.
 
